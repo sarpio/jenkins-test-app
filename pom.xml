@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sarpio</groupId>
-    <artifactId>for_jenkins_demo</artifactId>
+    <artifactId>for-jenkins-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>for_jenkins_demo</name>
     <description>Demo project for Spring Boot</description>
@@ -52,6 +52,17 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <appName>jenkins-spring-sarpio</appName>
+                    <processTypes>
+                        <web>java -jar -Dserver.port=$PORT target/${project.build.finalName}.jar</web>
+                    </processTypes>
                 </configuration>
             </plugin>
         </plugins>
